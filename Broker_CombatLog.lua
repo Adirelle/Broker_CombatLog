@@ -10,20 +10,16 @@ local dataobj = LibStub('LibDataBroker-1.1'):NewDataObject('Broker_CombatLog', {
 		if LoggingCombat() then
 			if forcedEnable then
 				forcedEnable = nil
-				print('forcedEnable = nil')
 			else
 				forcedDisable = true
-				print('forcedDisable = true')
 			end
 			LoggingCombat(false)
-			print('Combat log recording stop.')
+			print('Combat log recording stopped.')
 		else
 			if forcedDisable then
 				forcedDisable = nil
-				print('forcedDisable = nil')
 			else
 				forcedEnable = true
-				print('forcedEnable = true')
 			end
 			LoggingCombat(true)
 			print('Combat log recording started.')
@@ -36,7 +32,7 @@ frame:SetScript('OnEvent', function(self, event, ...) return self[event](self, e
 
 frame:RegisterEvent('PLAYER_ENTERING_WORLD')
 function frame:PLAYER_ENTERING_WORLD()
-	LoggingCombat(orcedEnable or (not forcedDisable and select(2, IsInInstance()) == "raid"))
+	LoggingCombat(forcedEnable or (not forcedDisable and select(2, IsInInstance()) == "raid"))
 end
 
 frame:RegisterEvent('PLAYER_LEAVING_WORLD')
@@ -48,7 +44,7 @@ local LoggingCombat = LoggingCombat
 
 function dataobj:Update()
 	if LoggingCombat() then
-		self.text = "On"
+		self.text = "Rec."
 		self.iconR, self.iconG, self.iconB = 1, 0 ,0
 	else
 		self.text = "Off"
