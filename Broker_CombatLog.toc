@@ -1,4 +1,4 @@
-## Interface: 30100
+## Interface: 40200
 
 ## Title: Broker: CombatLog
 ## Notes: Lightweight mount helper.
