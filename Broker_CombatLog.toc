@@ -4,8 +4,10 @@
 ## Notes: Lightweight mount helper.
 ## Author: Adirelle
 ## RequiredDeps: LibStub, CallbackHandler-1.0, LibDataBroker-1.1, LibDBIcon-1.0
+## SavedVariables: BrokerCombatLogSV
 
 libs\LibStub.lua
 libs\LibDataBroker-1.1.lua
+libs\LibDBIcon-1.0.lua
 
 Broker_CombatLog.lua
